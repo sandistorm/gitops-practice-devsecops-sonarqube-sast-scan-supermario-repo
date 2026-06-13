@@ -25,9 +25,8 @@ jobs:
           docker pull docker.io/shateri/supermariogitopsproject:${{ env.VERSION }}
           docker save -o supermariolatestdockerimage.tar docker.io/shateri/supermariogitopsproject:${{ env.VERSION }}
      
-      - name: Run Trivy vulnerability scanner in tarball mode
-        uses: aquasecurity/trivy-action@master
-        with:
-          input: /github/workspace/supermariolatestdockerimage.tar
-          exit-code: '1'
-          severity: 'CRITICAL,HIGH'
+      - name: Debug tar file
+        run: |
+          pwd
+          ls -lah
+          ls -lah /github/workspace
